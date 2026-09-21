@@ -1,9 +1,0 @@
-{
-  "name": "new-zera",
-  "version": "1.0.0",
-  "description": "NEW ZERA - Jogo 2D",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
