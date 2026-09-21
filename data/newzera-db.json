@@ -70,10 +70,10 @@
         "2": {
           "unlocked": true,
           "completed": true,
-          "x": 548.6577848827656,
-          "y": 618.6727038986238,
+          "x": 326.6710930331486,
+          "y": 1043.3688182767069,
           "hp": 100,
-          "hunger": 99,
+          "hunger": 100,
           "hands": [
             {
               "id": "knife",
@@ -86,42 +86,21 @@
             {
               "id": "food",
               "type": "food",
-              "amount": 5
+              "amount": 2
             },
             {
               "id": "medkit",
               "type": "medkit",
               "amount": 1
             },
-            {
-              "id": "pistol",
-              "type": "pistol",
-              "amount": 1
-            },
-            {
-              "id": "ammo",
-              "type": "ammo",
-              "amount": 6
-            },
-            {
-              "id": "bandage",
-              "type": "bandage",
-              "amount": 1
-            },
-            {
-              "id": "coin",
-              "type": "coin",
-              "amount": 5
-            },
+            null,
+            null,
+            null,
+            null,
             null
           ],
-          "collected": [
-            6,
-            0
-          ],
-          "openedChests": [
-            5
-          ],
+          "collected": [],
+          "openedChests": [],
           "npcsTalked": [
             0
           ],
@@ -200,10 +179,10 @@
         "4": {
           "unlocked": true,
           "completed": true,
-          "x": 1602.6005681963184,
-          "y": 1091.2826370191592,
-          "hp": 92,
-          "hunger": 87,
+          "x": 1632.8392059224084,
+          "y": 398.9668161294604,
+          "hp": 100,
+          "hunger": 92,
           "hands": [
             {
               "id": "knife",
@@ -216,27 +195,7 @@
             {
               "id": "food",
               "type": "food",
-              "amount": 3
-            },
-            {
-              "id": "pistol",
-              "type": "pistol",
-              "amount": 1
-            },
-            {
-              "id": "ammo",
-              "type": "ammo",
-              "amount": 6
-            },
-            {
-              "id": "bandage",
-              "type": "bandage",
               "amount": 2
-            },
-            {
-              "id": "coin",
-              "type": "coin",
-              "amount": 5
             },
             {
               "id": "medkit",
@@ -244,24 +203,26 @@
               "amount": 1
             },
             {
-              "id": "key",
-              "type": "key",
+              "id": "bandage",
+              "type": "bandage",
               "amount": 1
-            }
+            },
+            {
+              "id": "ammo",
+              "type": "ammo",
+              "amount": 1
+            },
+            null,
+            null,
+            null
           ],
           "collected": [
-            7,
-            4,
-            3,
-            6
+            6,
+            2
           ],
-          "openedChests": [
-            5
-          ],
+          "openedChests": [],
           "npcsTalked": [
-            0,
-            2,
-            1
+            2
           ],
           "houseTaken": [],
           "bossDefeated": false
