@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZERA: Beyond</title>
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <link rel="stylesheet" href="style.css?v=50" />
+</head>
+
+<body>
+
+    <div id="loading">
+        <div class="loading-glow"></div>
+        <img src="/assets/logo.png" alt="ZERA: Beyond" />
+        <div class="loading-title">ZERA: BEYOND</div>
+        <div class="loading-subtitle">UMA CIDADE ABANDONADA. UMA NOVA REALIDADE.</div>
+        <div class="loading-bar">
+            <div id="loadingProgress"></div>
+        </div>
+        <div class="loading-percent" id="loadingPercent">0%</div>
+        <div class="loading-tip" id="loadingTip">Carregando recursos...</div>
+    </div>
+
+    <section id="loginScreen" class="screen hidden">
+        <div class="loginBox">
+            <img class="loginLogo" src="/assets/logo.png" alt="ZERA: Beyond" />
+            <h1>ZERA: BEYOND</h1>
+            <p class="subtitle">Uma cidade abandonada. Uma nova realidade.</p>
+            <input id="loginName" type="text" placeholder="Nome" autocomplete="username" />
+            <input id="loginPassword" type="password" placeholder="Senha" autocomplete="current-password" />
+            <button id="loginButton">ENTRAR</button>
+            <button id="registerButton" class="secondary">CRIAR CONTA</button>
+            <p id="loginMessage"></p>
+        </div>
+    </section>
+
+    <section id="menuScreen" class="screen hidden">
+        <header class="menuHeader">
+            <div>
+                <img src="/assets/logo.png" class="smallLogo" />
+                <div>
+                    <strong>ZERA: BEYOND</strong>
+                    <span id="playerName">Jogador</span>
+                </div>
+            </div>
+            <button id="logoutButton" class="logout">SAIR</button>
+        </header>
+        <main>
+            <h2>SELECIONE UMA FASE</h2>
+            <p class="menuDescription">Você pode voltar a qualquer fase já desbloqueada sem perder o progresso das
+                outras.</p>
+            <div id="phases"></div>
+            <div class="tips">
+                <h3>CONTROLES</h3>
+                <p>WASD / Setas — movimentar</p>
+                <p>ESPAÇO — atacar</p>
+                <p>1 / 2 — trocar mão ativa</p>
+                <p>E — entrar em casa / interagir</p>
+                <p>Q — abrir mochila</p>
+                <p>F — comer</p>
+                <p>R — usar kit médico</p>
+                <p>DELETE — jogar item fora</p>
+                <p>ESC — pausa / sair do interior</p>
+            </div>
+        </main>
+    </section>
+
+    <section id="gameScreen" class="hidden">
+        <div id="game">
+            <div id="viewport">
+                <div id="world">
+                    <div id="map"></div>
+                    <div id="npcBox"></div>
+                    <div id="enemyBox"></div>
+                    <div id="itemBox"></div>
+                    <div id="exit"></div>
+                    <div id="player"><img id="playerImage" src="/assets/playerfrente.png" /></div>
+                </div>
+            </div>
+
+            <div id="hud">
+                <div class="hudTop">
+                    <div><span>FASE</span><strong id="phaseTitle">1</strong></div>
+                    <div><span>VIDA</span><strong id="hpText">100</strong></div>
+                    <div><span>FOME</span><strong id="hungerText">100</strong></div>
+                </div>
+                <div class="bars">
+                    <div class="bar">
+                        <div id="hpBar" class="barFill hp"></div>
+                    </div>
+                    <div class="bar">
+                        <div id="hungerBar" class="barFill hunger"></div>
+                    </div>
+                </div>
+                <div class="hudMid">
+                    <div id="objectives" class="objectives"></div>
+                </div>
+                <div class="hudBottom">
+                    <div class="hands" id="handsHud">
+                        <div class="hand" id="hand0">
+                            <span class="slotKey">1</span>
+                            <span class="handIcon">—</span>
+                            <span class="handText"><span class="handName">vazio</span></span>
+                        </div>
+                        <div class="hand" id="hand1">
+                            <span class="slotKey">2</span>
+                            <span class="handIcon">—</span>
+                            <span class="handText"><span class="handName">vazio</span></span>
+                        </div>
+                    </div>
+                    <span>🍎 <b id="foodText">0</b></span>
+                    <span>💊 <b id="medkitText">0</b></span>
+                    <button id="backpackButton">🎒 MOCHILA (Q)</button>
+                    <button id="pauseButton">⏸</button>
+                </div>
+            </div>
+
+            <div id="danger"></div>
+
+            <div id="story" class="panel hidden">
+                <div class="panelBox">
+                    <h1 id="storyTitle">FASE 1</h1>
+                    <p id="storySubtitle" class="storySub">A CIDADE VAZIA</p>
+                    <p id="storyText" class="storyText">...</p>
+                    <p id="storyObjective" class="storyObj">Objetivo: ...</p>
+                    <button id="storyStart">COMEÇAR</button>
+                </div>
+            </div>
+
+            <div id="backpack" class="panel hidden">
+                <div class="panelBox big">
+                    <h2>MOCHILA</h2>
+                    <p class="hint">Clique num slot para selecionar, depois em outro para mover. Use "USAR" para
+                        consumir e "JOGAR FORA" (ou DELETE) para descartar.</p>
+                    <div class="inventoryRow">
+                        <div class="invColumn">
+                            <h3>MÃOS (1 / 2)</h3>
+                            <div class="invGrid handsGrid" id="handsSlots"></div>
+                        </div>
+                        <div class="invColumn">
+                            <h3>MOCHILA (7 slots)</h3>
+                            <div class="invGrid backpackGrid" id="backpackSlots"></div>
+                        </div>
+                    </div>
+                    <div class="invActions">
+                        <button id="useSelectedButton">USAR ITEM SELECIONADO</button>
+                        <button id="dropSelectedButton">JOGAR FORA</button>
+                        <button id="closeBag">FECHAR</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="interior" class="panel hidden">
+                <div class="panelBox big">
+                    <h2 id="interiorTitle">CASA</h2>
+                    <p class="hint">Procure itens e clique para pegar.</p>
+                    <div class="interiorRoom" id="interiorRoom"></div>
+                    <div class="invActions"><button id="interiorLeave">SAIR (ESC)</button></div>
+                </div>
+            </div>
+
+            <div id="dialog" class="panel hidden">
+                <div class="panelBox">
+                    <h2 id="dialogName">NPC</h2>
+                    <p id="dialogText">...</p>
+                    <button id="dialogClose">CONTINUAR</button>
+                </div>
+            </div>
+
+            <div id="pauseMenu" class="panel hidden">
+                <div class="panelBox">
+                    <h2>PAUSADO</h2>
+                    <button id="continueButton">CONTINUAR</button>
+                    <button id="saveButton">SALVAR</button>
+                    <button id="backMenuButton">MENU</button>
+                </div>
+            </div>
+
+            <div id="complete" class="panel hidden">
+                <div class="panelBox">
+                    <h1>FASE CONCLUÍDA</h1>
+                    <p id="completeText">Fase concluída.</p>
+                    <button id="nextPhaseButton">PRÓXIMA FASE</button>
+                    <button id="completeMenuButton">VOLTAR AO MENU</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js?v=50"></script>
+</body>
+
+</html>
